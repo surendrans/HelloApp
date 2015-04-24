@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
     get 'new_invite'
     get 'search_user'
+    post 'invite'
   end
   end
   resources :tenants

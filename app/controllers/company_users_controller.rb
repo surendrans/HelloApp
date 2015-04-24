@@ -61,10 +61,6 @@ class CompanyUsersController < ApplicationController
     end
   end
 
-  def new_invite
-    
-  end
-
 
   def search_user
     user = User.find_by(email: params[:email])
@@ -74,6 +70,10 @@ class CompanyUsersController < ApplicationController
       data = {user: nil, message: "User not found"}
     end
     render json: data
+  end
+  def invite
+    user = User.find(params[:id]) if params[:id]
+    render json: {}
   end
   private
     # Use callbacks to share common setup or constraints between actions.

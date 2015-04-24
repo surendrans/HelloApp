@@ -1,3 +1,22 @@
 
 <input type="text" class="user_email" />
 <a href="#" onClick="CompanyUser.searchUser()">Search</a>
+
+<div id="user_info_container"></div>
+
+<script type="text/template" id="user_info">
+{{#if user}}
+<div class="user">
+  <h1>{{user.name}}</h1>
+  <div >
+    {{{user.email}}} <br/>
+     {{{user.phone_number}}}
+  </div>
+  <a href="#" class="invite" onClick="CompanyUser.inviteUser('id', '{{user.id}}')">Invite</a>
+</div>
+{{else}}
+User not found
+* An email will be sent to the user with QRcode<br/>
+  <a href="#" class="invite" onClick="CompanyUser.inviteUser('email', '{{email}}')">Anyway Invite </a>
+{{/if}}
+</script>
