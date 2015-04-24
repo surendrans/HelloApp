@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
+  resources :users
+  devise_for :company_users
+  resources :company_users do
+    collection do
+    get 'new_invite'
+    get 'search_user'
+  end
+  end
+  resources :tenants
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'tenants#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
