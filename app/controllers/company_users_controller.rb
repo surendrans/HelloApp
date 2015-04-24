@@ -72,7 +72,8 @@ class CompanyUsersController < ApplicationController
     render json: data
   end
   def invite
-    user = User.find(params[:id]) if params[:id]
+
+    user = User.find(params[:value].to_i) if params[:type] == "id"
     render json: {}
   end
   private

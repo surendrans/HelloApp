@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150424202144) do
+ActiveRecord::Schema.define(version: 20150424233034) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "company_users", force: :cascade do |t|
     t.string   "name"
@@ -30,8 +33,8 @@ ActiveRecord::Schema.define(version: 20150424202144) do
     t.string   "last_sign_in_ip"
   end
 
-  add_index "company_users", ["email"], name: "index_company_users_on_email", unique: true
-  add_index "company_users", ["reset_password_token"], name: "index_company_users_on_reset_password_token", unique: true
+  add_index "company_users", ["email"], name: "index_company_users_on_email", unique: true, using: :btree
+  add_index "company_users", ["reset_password_token"], name: "index_company_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "tenants", force: :cascade do |t|
     t.string   "name"
@@ -48,6 +51,7 @@ ActiveRecord::Schema.define(version: 20150424202144) do
     t.string   "token"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "password"
   end
 
 end
