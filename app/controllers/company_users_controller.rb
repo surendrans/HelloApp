@@ -77,7 +77,9 @@ class CompanyUsersController < ApplicationController
     invitation  = Invitation.new
     if user
       invitation.email = user.email
-      invitation.user_id = user.id   
+      invitation.user_id = user.id 
+      invitation.poc = params[:poc]
+      invitation.purpose = params[:purpose]  
     else
       invitation.email = params[:value]
     end

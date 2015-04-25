@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     get 'search_user'
     post 'invite'
     get 'scan'
+    get 'scan'
   end
   end
   resources :tenants

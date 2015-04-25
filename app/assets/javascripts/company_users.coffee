@@ -9,7 +9,9 @@
     $("#user_info_container").html(compiled({user: data.user, email: userEmail}))
     return
   inviteUser: (type, value) ->
-    data =  {type: type, value: value}
+    poc = $('.poc').val()
+    reason = $('.reason').val()
+    data =  { type: type, value: value, poc: poc, reason: reason }
     console.log data
     $.post("/company_users/invite", data).done (data) ->
       compiled = Handlebars.compile($("#user_info").html());

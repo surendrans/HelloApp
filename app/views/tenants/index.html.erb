@@ -18,30 +18,18 @@
     </div>
     <div class="col-sm-6 col-md-3">
       <div class="panel income db mbm">
-        <a href="/practice/intake_forms">
+        <a href="/company_users/invitations">
         <div class="panel-body">
           
             <p class="icon dashboard-icon"><i class="icon fa fa-clipboard"></i></p>
             <h4 class="value"><span><%#= @intakeform_count%></span></h4>
-            <p class="description">Visitors</p>
+            <p class="description">Invitations</p>
         
         </div>
           </a>
       </div>
     </div>
-    <div class="col-sm-6 col-md-3">
-      <div class="panel task db mbm">
-        <a href="/practice/users">
-        <div class="panel-body">
-          
-            <p class="icon dashboard-icon"><i class="icon fa fa-group"></i></p>
-            <h4 class="value"><span><%#= @user_count%></span></h4>
-            <p class="description">Invitations</p>
-         
-        </div>
-         </a>
-      </div>
-    </div>
+    
   </div>
   <div class="row mbl">
     <div class="col-lg-12">
@@ -52,7 +40,7 @@
         <div class="col-lg-6 col-md-6  col-sm-6  col-xs-6">
           <h3>
           <%#= link_to(" Upload CSV", new_practice_patient_path, class: "btn btn-green pull-right fa fa-cloud-upload") %>
-          <%= link_to("Invite User", '', class: "btn btn-green pull-right fa fa-plus") %>
+          <%#= link_to("Invite User", '', class: "btn btn-green pull-right fa fa-plus") %>
           </h3>  
         </div>
       </div>
@@ -98,38 +86,48 @@
 
 
 
+<div class="row">
+<div class="col-lg-6">
+  <div class="panel panel-yellow">
+    <div class="panel-heading">Invite User</div>
+    <div class="panel-body ">
 
-Dashboard
+     
+        <input autofocus="autofocus" placeholder="Email" class="form-control user_email" type="email" name="company_user[email]" id="company_user_email">
+        <a href="#" onClick="CompanyUser.searchUser()" class="btn btn-green pull-right fa fa-plus">Search</a>
+      </div>
+  
+    </div>
+  </div>
+
+<div class="col-lg-6">
+  <div class="panel panel-yellow">
+    <div class="panel-heading">User Information</div>
+    <div class="panel-body ">
+      <div id="user_info_container"></div>
+    </div>
+    
+      
+    </div>
+  </div>
+</div>
 
 
-Listing TOdays visits <br />
-
-Invite User </br>
-
-
-<input type="text" class="user_email" />
-<a href="#" onClick="CompanyUser.searchUser()">Search</a>
-
-<div id="user_info_container"></div>
 
 <script type="text/template" id="user_info">
 {{#if user}}
 <div class="user">
-  <h1>{{user.name}}</h1>
-  <div >
-    {{{user.email}}} <br/>
-     {{{user.phone_number}}}
-  </div>
-<a href="#" class="invite" onClick="CompanyUser.inviteUser('id', '{{user.id}}')">
+  <b>Name </b> : {{user.name}}<br/>
+   <b>Email </b> : {{{user.email}}}  
+    <b>Phone Number </b> :  {{{user.phone_number}}} <br />
+     <input autofocus="autofocus" placeholder="Reason for visit" class="form-control reason" type="text" >
+     <input autofocus="autofocus" placeholder="Ponit of contact" class="form-control poc" type="text" >
+    <a href="#" class="btn btn-green pull-right invite" onClick="CompanyUser.inviteUser('id', '{{user.id}}')">
   Invite</a>
-</div>
+  </div>
 {{else}}
 User not found
 * An email will be sent to the user with QRcode<br/>
   <a href="#" class="invite" onClick="CompanyUser.inviteUser('email', '{{email}}')">Anyway Invite </a>
 {{/if}}
 </script>
-
-
-<br />
-View reports
