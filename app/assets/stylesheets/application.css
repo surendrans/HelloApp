@@ -14,6 +14,8 @@
  *= require theme/bootstrap
  *= require theme/bootstrap-switch
  *= require theme/font-awesome
+ *= require theme/jquery-ui-1.10.4.custom
+ *= require theme/yellow-blue
  *= require_tree .
  *= require_self
  */
