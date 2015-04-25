@@ -25,14 +25,13 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    p user_params,"----usr--------"
     @user = User.new(user_params)
-    p @user,"---------------"
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         # format.json { render :show, status: "Success", location: @user }
-        format.json { render json: @user, status: :created, status_message: "success"}
+        qr_url = "http://localhost:3000/qr_codes/#{@user.email}.png"
+        format.json { render json: @user.attributes.merge!(qr_url: qr_url), status: :created, status_message: "success"}
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
