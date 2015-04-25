@@ -118,9 +118,9 @@
 {{#if user}}
 <div class="user">
   <b>Name </b> : {{user.name}}<br/>
-   <b>Email </b> : {{{user.email}}}  
+   <b>Email </b> : {{{user.email}}}  <br />
     <b>Phone Number </b> :  {{{user.phone_number}}} <br />
-     <input autofocus="autofocus" placeholder="Reason for visit" class="form-control reason" type="text" >
+     <input autofocus="autofocus" placeholder="Reason for visit" class="form-control reason" type="text" ><br>
      <input autofocus="autofocus" placeholder="Ponit of contact" class="form-control poc" type="text" >
     <a href="#" class="btn btn-green pull-right invite" onClick="CompanyUser.inviteUser('id', '{{user.id}}')">
   Invite</a>
