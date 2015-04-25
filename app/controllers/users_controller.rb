@@ -11,7 +11,8 @@ class UsersController < ApplicationController
 def login
   user = User.where(email: params[:email], password: params[:password]).first
   if user
-    data = { status: 200, id: user.id, user:  user }
+    qr_url = "https://helloapph.herokuapp.com/qr_codes/#{user.email}.png"
+    data = { status: 200, id: user.id, user:  user.attributes.merge!(qr_url: qr_url) }
   else
     data = { status: 404, message: "User not found"}
   end
