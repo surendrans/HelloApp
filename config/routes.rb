@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     member do 
     get 'invitations'
   end
+  collection do
+    get 'login'
+  end
   end
   devise_for :company_users
   resources :company_users do

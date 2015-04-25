@@ -2,14 +2,23 @@ class UsersController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :create
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  # GET /users
-  # GET /users.json
-
 
   def invitations
     user = User.find params[:id].to_i
     render json: {data: user.invitations}
   end
+
+def login
+  user = User.where(email: params[:email], password: params[:password]).first
+  if user
+    data = { status: 200, id: user.id }
+  else
+    data = { status: 404, message: "User not found"}
+  end
+
+  render json: data
+end
+
   def index
     @users = User.all
   end
