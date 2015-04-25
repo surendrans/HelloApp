@@ -4,6 +4,12 @@ class UsersController < ApplicationController
 
   # GET /users
   # GET /users.json
+
+
+  def invitations
+    user = User.find params[:id].to_i
+    render json: {data: user.invitations}
+  end
   def index
     @users = User.all
   end
@@ -30,7 +36,7 @@ class UsersController < ApplicationController
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         # format.json { render :show, status: "Success", location: @user }
-        qr_url = "http://localhost:3000/qr_codes/#{@user.email}.png"
+        qr_url = "https://helloapph.herokuapp.com/qr_codes/#{@user.email}.png"
         format.json { render json: @user.attributes.merge!(qr_url: qr_url), status: :created, status_message: "success"}
       else
         format.html { render :new }

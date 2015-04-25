@@ -74,7 +74,19 @@ class CompanyUsersController < ApplicationController
   def invite
 
     user = User.find(params[:value].to_i) if params[:type] == "id"
+    invitation  = Invitation.new
+    if user
+      invitation.email = user.email
+      invitation.user_id = user.id   
+    else
+      invitation.email = params[:value]
+    end
+    invitation.save
     render json: {}
+  end
+
+  def scan
+    
   end
   private
     # Use callbacks to share common setup or constraints between actions.

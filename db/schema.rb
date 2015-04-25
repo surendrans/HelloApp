@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150424233034) do
+ActiveRecord::Schema.define(version: 20150425004017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,18 @@ ActiveRecord::Schema.define(version: 20150424233034) do
   add_index "company_users", ["email"], name: "index_company_users_on_email", unique: true, using: :btree
   add_index "company_users", ["reset_password_token"], name: "index_company_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "invitations", force: :cascade do |t|
+    t.string   "email"
+    t.integer  "user_id"
+    t.datetime "invitation_date"
+    t.string   "purpose"
+    t.string   "qr_code_url"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "invitations", ["user_id"], name: "index_invitations_on_user_id", using: :btree
+
   create_table "tenants", force: :cascade do |t|
     t.string   "name"
     t.string   "domain"
@@ -54,4 +66,5 @@ ActiveRecord::Schema.define(version: 20150424233034) do
     t.string   "password"
   end
 
+  add_foreign_key "invitations", "users"
 end

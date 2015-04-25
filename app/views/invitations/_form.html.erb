@@ -1,0 +1,37 @@
+<%= form_for(@invitation) do |f| %>
+  <% if @invitation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@invitation.errors.count, "error") %> prohibited this invitation from being saved:</h2>
+
+      <ul>
+      <% @invitation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :invitation_date %><br>
+    <%= f.datetime_select :invitation_date %>
+  </div>
+  <div class="field">
+    <%= f.label :purpose %><br>
+    <%= f.text_field :purpose %>
+  </div>
+  <div class="field">
+    <%= f.label :qr_code_url %><br>
+    <%= f.text_field :qr_code_url %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

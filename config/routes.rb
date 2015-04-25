@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :invitations
+  resources :users do
+    member do 
+    get 'invitations'
+  end
+  end
   devise_for :company_users
   resources :company_users do
     collection do

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @invitation.email %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @invitation.user %>
+</p>
+
+<p>
+  <strong>Invitation date:</strong>
+  <%= @invitation.invitation_date %>
+</p>
+
+<p>
+  <strong>Purpose:</strong>
+  <%= @invitation.purpose %>
+</p>
+
+<p>
+  <strong>Qr code url:</strong>
+  <%= @invitation.qr_code_url %>
+</p>
+
+<%= link_to 'Edit', edit_invitation_path(@invitation) %> |
+<%= link_to 'Back', invitations_path %>
