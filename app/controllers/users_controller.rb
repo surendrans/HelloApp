@@ -41,17 +41,15 @@ end
   # POST /users.json
   def create
     @user = User.new(user_params)
-    respond_to do |format|
+    
       if @user.save
       
         # format.json { render :show, status: "Success", location: @user }
         qr_url = "https://helloapph.herokuapp.com/qr_codes/#{@user.email}.png"
         render json: @user.attributes.merge!(qr_url: qr_url), status: :created, status_message: "success"
       else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+      render json: @user.errors, status: :unprocessable_entity 
       end
-    end
   end
 
   # PATCH/PUT /users/1
