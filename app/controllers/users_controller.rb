@@ -43,10 +43,10 @@ end
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+      
         # format.json { render :show, status: "Success", location: @user }
         qr_url = "https://helloapph.herokuapp.com/qr_codes/#{@user.email}.png"
-        format.json { render json: @user.attributes.merge!(qr_url: qr_url), status: :created, status_message: "success"}
+        render json: @user.attributes.merge!(qr_url: qr_url), status: :created, status_message: "success"
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -86,11 +86,11 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-     if request.format.symbol == :json
+     #if request.format.symbol == :json
        params.permit(:name, :email, :phone_number, :password)
-     else
-      params.require(:user).permit(:name, :email, :phone_number)
-     end
+     #else
+      #params.require(:user).permit(:name, :email, :phone_number)
+     #end
 
       # p request.format.symbol,"-------------"
      # params.permit(:name, :email, :phone_number) if request.format.symbol == :json
