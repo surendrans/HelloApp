@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 def login
   user = User.where(email: params[:email], password: params[:password]).first
   if user
-    data = { status: 200, id: user.id }
+    data = { status: 200, id: user.id, user:  user }
   else
     data = { status: 404, message: "User not found"}
   end
