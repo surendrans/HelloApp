@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :visitors
   resources :invitations
   resources :users do
     member do 
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
     get 'new_invite'
     get 'search_user'
     post 'invite'
+    get 'scan'
   end
   end
   resources :tenants

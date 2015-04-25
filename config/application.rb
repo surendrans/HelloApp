@@ -21,6 +21,10 @@ module HelloApp
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
+     # config.autoload_paths += Dir["#{config.root}/lib", "#{config.root}/lib/**/"]
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
+    # config.assets.paths << "#{Rails.root}/app/assets/templates"
+    # config.assets.precompile += %w[practice/questions.css]
     config.active_record.raise_in_transactional_callbacks = true
   end
 end

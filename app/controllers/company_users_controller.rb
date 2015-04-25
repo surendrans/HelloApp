@@ -86,7 +86,17 @@ class CompanyUsersController < ApplicationController
   end
 
   def scan
-    
+    invitation = Invitation.where(code: params[:code], active: nil).first
+    if invitation 
+      invitation.active = false
+      invitation.save
+      user = invitation.user
+      Visitor.create(name: user.name, email: user.email, purpose: invitation.purpose, poc: invitation.poc)
+      status_text = "success"
+    else
+      status_text=  "failure"
+    end
+    render json: {status: 200, status_text: status_text}
   end
   private
     # Use callbacks to share common setup or constraints between actions.

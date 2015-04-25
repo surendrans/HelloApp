@@ -10,6 +10,24 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require theme/animate
+ *= require theme/bootstrap
+ *= require theme/bootstrap-switch
+ *= require theme/font-awesome
+ *= require theme/jquery-ui-1.10.4.custom
+ *= require theme/yellow-blue
+ *= require theme/style-responsive
+ *= require theme/wizard-custom
+ *= require theme/jquery.steps
+ *= require theme/daterangepicker-bs3
+ *= require theme/datepicker3
+ *= require theme/flash
+ *= require theme/pace
+ *= require theme/minimal
+ *= require theme/jquery.notific8.min
+ *= require theme/icheck-grey
+ *= require theme/icheck-all
+ *= require theme/toastr.min
  *= require_tree .
  *= require_self
  */

@@ -1,0 +1,16 @@
+
+
+<a data-hover="dropdown" href="#" class="dropdown-toggle">
+  &nbsp;
+  <span class="hidden-xs"><%= current_company_user.name ||  current_company_user.email %></span>
+  &nbsp;
+  <span class="caret"></span>
+</a>
+<ul class="dropdown-menu dropdown-user pull-right">
+  <li>
+    <%= link_to destroy_company_user_session_path, :method => :delete do %>        
+      <i class="fa fa-key"></i> Log Out
+    <% end %>
+  </li>
+ 
+</ul>
