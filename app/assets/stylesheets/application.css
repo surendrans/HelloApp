@@ -17,17 +17,6 @@
  *= require theme/jquery-ui-1.10.4.custom
  *= require theme/yellow-blue
  *= require theme/style-responsive
- *= require theme/wizard-custom
- *= require theme/jquery.steps
- *= require theme/daterangepicker-bs3
- *= require theme/datepicker3
- *= require theme/flash
- *= require theme/pace
- *= require theme/minimal
- *= require theme/jquery.notific8.min
- *= require theme/icheck-grey
- *= require theme/icheck-all
- *= require theme/toastr.min
  *= require_tree .
  *= require_self
  */
