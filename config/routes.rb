@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :visitors
   resources :invitations
+  get "/users" => "users#create"
   resources :users do
     member do 
     get 'invitations'
